@@ -3,7 +3,6 @@
 //inputUS
 //inputDS
 //outputInput
-
 //inputUHogar
 //inputDHogar
 //inputTHogar
@@ -19,6 +18,24 @@
 //outputGP
 
 
+//Creo los Array
+
+const IngresoArray = [];
+IngresoArray.length = 2;
+
+const GastoHogarArray = [];
+GastoHogarArray.length = 4;
+
+const GastoTransArray = [];
+GastoTransArray.length = 5;
+
+const GastoEduArray = [];
+GastoEduArray.length = 3;
+
+const GastoPerArray = [];
+GastoPerArray.length = 7;
+
+
 function ceroALosInputs(inputIDs) {
     const inputElements = inputIDs.map(id => document.getElementById(id));
 
@@ -27,7 +44,17 @@ function ceroALosInputs(inputIDs) {
     });
 }
 
+function watchInputs(inputIDs) {
+    const inputElements = inputIDs.map(id => document.getElementById(id));
 
+    inputElements.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (input.value.trim() === '') {
+                input.value = 0;
+            }
+        });
+    });
+}
 
 
 function Suma(inputIDs, outputID) {
@@ -65,6 +92,12 @@ ceroALosInputs(['inputUS', 'inputDS', 'outputInput', 'inputUHogar','inputDHogar'
 'inputUT', 'inputDT', 'inputTT', 'inputCT', 'inputQT', 'outputTrans','inputUE', 'inputDE', 'inputTE', 'outputEduc',
 'inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP','inputSGP', 'inputSIGP', 'outputGP',
 'outputGT', 'outputT']);
+
+watchInputs(['inputUS', 'inputDS', 'outputInput', 'inputUHogar','inputDHogar','inputTHogar','inputCHogar','outputHogar',
+'inputUT', 'inputDT', 'inputTT', 'inputCT', 'inputQT', 'outputTrans','inputUE', 'inputDE', 'inputTE', 'outputEduc',
+'inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP','inputSGP', 'inputSIGP', 'outputGP',
+'outputGT', 'outputT']);
+
 
 
 
