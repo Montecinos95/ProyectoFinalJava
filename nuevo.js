@@ -12,17 +12,26 @@ function ceroALosInputs(inputIDs) {
     });
 }
 
-// Función para escuchar los cambios en los input
+// Función para escuchar los cambios en los input y evitar números negativos
 function watchInputs(inputIDs) {
     inputIDs.forEach(id => {
         const inputElement = document.getElementById(id);
         inputElement.addEventListener('blur', function() {
-            if (inputElement.value.trim() === '') {
+            const trimmedValue = inputElement.value.trim();
+            if (trimmedValue === '') {
                 inputElement.value = 0;
+            } else {
+                const numericValue = parseFloat(trimmedValue);
+                if (numericValue < 0) {
+                    inputElement.value = 0;
+                    // Actualizar outputInput a cero si se ingresa un número negativo
+                    document.getElementById('outputInput','outputT').value = 0;
+                }
             }
         });
     });
 }
+
 
 // Función para sumar los valores de los input y mostrar el resultado en un output
 function Suma(inputIDs, outputID) {
@@ -47,7 +56,7 @@ function Resta(inputIDs, outputID) {
 }
 
 // Inicializar los input a 0
-ceroALosInputs(['inputUS', 'inputDS', 'inputUHogar', 'inputDHogar', 'inputTHogar', 'inputCHogar', 'inputUT', 'inputDT', 'inputTT', 'inputCT', 'inputQT', 'inputUE', 'inputDE', 'inputTE', 'inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP', 'inputSGP', 'inputSIGP']);
+ceroALosInputs(['inputUS', 'inputDS', 'inputUHogar', 'inputDHogar', 'inputTHogar', 'inputCHogar', 'inputUT', 'inputDT', 'inputTT', 'inputCT', 'inputQT', 'inputUE', 'inputDE', 'inputTE', 'inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP', 'inputSGP', 'inputSIGP','outputInput','outputT','outputGT','outputHogar','outputTrans','outputEduc','outputGP']);
 
 // Escuchar cambios en los input
 watchInputs(['inputUS', 'inputDS', 'inputUHogar', 'inputDHogar', 'inputTHogar', 'inputCHogar', 'inputUT', 'inputDT', 'inputTT', 'inputCT', 'inputQT', 'inputUE', 'inputDE', 'inputTE', 'inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP', 'inputSGP', 'inputSIGP']);
