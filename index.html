@@ -2,167 +2,164 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Expenses</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="./app.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Expenses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="./app.css">
 </head>
 
 <body>
+  <div class="container-fluid">
+    <h2>Simulador de Gastos de MontechINC.</h2>
+  </div>
+
+  <section class="Simulador">
     <div class="container-fluid">
-        <h2>Simulador de Gastos de MontechINC.</h2>
-    </div>
+      <div class="parent">
 
-    <section class="Simulador">
-        <div class="container-fluid">
-            <div class="parent">
-
-                <div class="div1">
-                    <div class="container-fluid">
-                        <h3>Tus Ingresos Mensuales</h3>
-                        <div class="row">
-                            <div class="col-12">
-                                <span>Sueldo Limpio</span>
-                                <input type="Number" id="inputUS" placeholder="Pesos Argentinos" maxlength="6" min="0">
-                            </div>
-                            <div class="col-12">
-                                <span>Otros Ingresos</span>
-                                <input type="number" id="inputDS" placeholder="Pesos Argentinos" maxlength="6" min="0">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- seccion de dropdowns -->
-                <div class="container-fluid">
-                <div class="div2">
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Gastos del Hogar
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div><span>Alquiler</span><input type="number" id="inputUHogar"></div>
-                                <div><span>Agua, Gas y Electricidad</span><input type="number" id="inputDHogar"></div>
-                                <div><span>Internet, Television</span><input type="number" id="inputTHogar"></div>
-                                <div><span>Telefono</span><input type="number" id="inputCHogar"></div>
-                                <div><span>Total</span><input type="number" id="outputHogar" readonly></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Transporte
-                            </button>
-                          </h2>
-                          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div><span>Cuota Vehiculo</span><input type="number" id="inputUT"></div>
-                                <div><span>Seguro Vehiculo</span><input type="number" id="inputDT"></div>
-                                <div><span>Mantenimiento</span><input type="number" id="inputTT"></div>
-                                <div><span>Nafta</span><input type="number" id="inputCT"></div>
-                                <div><span>Transporte Publico</span><input type="number" id="inputQT"></div>
-                                <div><span>Total</span><input type="number" id="outputTrans" readonly></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Educacion
-                            </button>
-                          </h2>
-                          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div><span>Matricula</span><input type="number" id="inputUE"></div>
-                                <div><span>Cuota</span><input type="number" id="inputDE"></div>
-                                <div><span>Materiales</span><input type="number" id="inputTE"></div>
-                                <div><span>Total</span><input type="number" readonly id="outputEduc"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                  Gastos Personales
-                              </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                              <div class="accordion-body">
-                                <div><span>Resumen Tarjeta</span><input type="number" id="inputUGP"></div>
-                                <div><span>Ropa</span><input type="number" id="inputDGP"></div>
-                                <div><span>Entretenimiento</span><input type="number" id="inputTGP"></div>
-                                <div><span>Vacaciones</span><input type="number" id="inputCGP"></div>
-                                <div><span>Gastos médicos</span><input type="number" id="inputCIGP"></div>
-                                <div><span>Mascota</span><input type="number" id="inputSGP"></div>
-                                <div><span>Otros Gastos</span><input type="number" id="inputSIGP"></div>
-                                <div><span>Total</span><input type="number" id="outputGP" readonly></div>
-                              </div>
-                            </div>
-                          </div>    
-                      </div>
-                </div>
-              </div>  
-
-                <div class="div3">
-                    <div class="container-fluid">
-                        <h3>Resumen</h3>
-                        <div class="row">
-                            <div class="col-6">
-                                <h3>Ingresos Totales</h3>
-                                <input type="number" id="outputInput" readonly>
-                            </div>
-                            <div class="col-6">
-                                <h3>Gastos Totales</h3>
-                                <input type="number" name="" id="outputGT" readonly>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <h3>Balance a final de Mes</h3>
-                                <input type="number" id="outputT" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid">
-                        <h3>Balance por tipo de gastos</h3>
-                        <div class="progress row">
-                          <div id="progress-hog" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            0%
-                          </div>
-                        </div>
-                        
-                        <div class="progress">
-                          <div id="progress-tra" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            0%
-                          </div>
-                        </div>
-                        
-                        <div class="progress">
-                          <div id="progress-edu" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            0%
-                          </div>
-                        </div>
-                        <div class="progress">
-                          <div id="progress-gas" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            0%
-                          </div>
-                        </div>
-                        
-                    </div>
-                </div>
+        <div class="div1">
+          <div class="container-fluid">
+            <h3>Tus Ingresos Mensuales</h3>
+            <div class="row">
+              <div class="col-12">
+                <span>Sueldo Limpio</span>
+                <input type="Number" id="inputUS" placeholder="Pesos Argentinos" maxlength="6" min="0">
+              </div>
+              <div class="col-12">
+                <span>Otros Ingresos</span>
+                <input type="number" id="inputDS" placeholder="Pesos Argentinos" maxlength="6" min="0">
+              </div>
             </div>
+          </div>
         </div>
-        <button id="cargarDatosButton" onclick="cargarDatosDesdeJSON()">Cargar Ejemplo</button>
 
-    
-    </section>
+        <!-- seccion de dropdowns -->
+        <div class="container-fluid">
+          <div class="div2">
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Gastos del Hogar
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div><span>Alquiler</span><input type="number" id="inputUHogar"></div>
+                    <div><span>Agua, Gas y Electricidad</span><input type="number" id="inputDHogar"></div>
+                    <div><span>Internet, Television</span><input type="number" id="inputTHogar"></div>
+                    <div><span>Telefono</span><input type="number" id="inputCHogar"></div>
+                    <div><span>Total</span><input type="number" id="outputHogar" readonly></div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Transporte
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div><span>Cuota Vehiculo</span><input type="number" id="inputUT"></div>
+                    <div><span>Seguro Vehiculo</span><input type="number" id="inputDT"></div>
+                    <div><span>Mantenimiento</span><input type="number" id="inputTT"></div>
+                    <div><span>Nafta</span><input type="number" id="inputCT"></div>
+                    <div><span>Transporte Publico</span><input type="number" id="inputQT"></div>
+                    <div><span>Total</span><input type="number" id="outputTrans" readonly></div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Educacion
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div><span>Matricula</span><input type="number" id="inputUE"></div>
+                    <div><span>Cuota</span><input type="number" id="inputDE"></div>
+                    <div><span>Materiales</span><input type="number" id="inputTE"></div>
+                    <div><span>Total</span><input type="number" readonly id="outputEduc"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Gastos Personales
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div><span>Resumen Tarjeta</span><input type="number" id="inputUGP"></div>
+                    <div><span>Ropa</span><input type="number" id="inputDGP"></div>
+                    <div><span>Entretenimiento</span><input type="number" id="inputTGP"></div>
+                    <div><span>Vacaciones</span><input type="number" id="inputCGP"></div>
+                    <div><span>Gastos médicos</span><input type="number" id="inputCIGP"></div>
+                    <div><span>Mascota</span><input type="number" id="inputSGP"></div>
+                    <div><span>Otros Gastos</span><input type="number" id="inputSIGP"></div>
+                    <div><span>Total</span><input type="number" id="outputGP" readonly></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="div3">
+          <div class="container-fluid">
+            <h3>Resumen</h3>
+            <div class="row">
+              <div class="col-6">
+                <h3>Ingresos Totales</h3>
+                <input type="number" id="outputInput" readonly>
+              </div>
+              <div class="col-6">
+                <h3>Gastos Totales</h3>
+                <input type="number" name="" id="outputGT" readonly>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <h3>Balance a final de Mes</h3>
+                <input type="number" id="outputT" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <h3>Balance por tipo de gastos</h3>
+            <div class="row"></div>
+            <div class="progress col-12" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 10%">GH 10%</div>
+            </div>
+            <div class="progress col-12" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 25%"></div>
+            </div>
+            <div class="progress col-12" role="progressbar" aria-label="Info striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 50%"></div>
+            </div>
+            <div class="progress col-12" role="progressbar" aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width: 75%"></div>
+            </div>
+            <div class="progress col-12" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width: 100%"></div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <button id="cargarDatosButton" onclick="cargarDatosDesdeJSON()">Cargar Ejemplo</button>
+
+
+  </section>
 
 
 
@@ -170,11 +167,7 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
+  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script src="./probando.js"></script>
 
 </html>
-
-
-

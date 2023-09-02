@@ -12,6 +12,11 @@ function ceroALosInputs(inputIDs) {
     });
 }
 
+function barraProgresoPor(){
+    const Va = parseFloat(document.getElementById('outputT').value);
+    
+}
+
 // Función para escuchar los cambios en los input y evitar números negativos
 function watchInputs(inputIDs) {
     inputIDs.forEach(id => {
@@ -107,7 +112,7 @@ document.addEventListener('input', function (event) {
         Suma(['outputHogar', 'outputTrans', 'outputEduc', 'outputGP'], 'outputGT');
         Resta(['outputInput', 'outputGT'], 'outputT');
 
-        let valor = parseFloat(document.getElementById('outputT').value<=0);
+        let valor = parseFloat(document.getElementById('outputT').value);
         if (valor<=0) {
             document.getElementById('outputT').style.color = 'red'; 
         }

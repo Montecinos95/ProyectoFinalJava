@@ -34,3 +34,7 @@ span {
 #outputGT{
   color: red;
 }
+
+.accordion-item{
+  width: 75%;
+}
