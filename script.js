@@ -12,16 +12,19 @@ function ceroALosInputs(inputIDs) {
     });
 }
 
-function barraProgresoPor(){
-    const Va = parseFloat(document.getElementById('outputT').value);
-    
+// Funcion Porcentaje
+function calcularPercentaje(valor, total) {
+    if (total === 0 || valor === 0) {
+        return 0;
+    }
+    return (valor / total) * 100;
 }
 
 // Función para escuchar los cambios en los input y evitar números negativos
 function watchInputs(inputIDs) {
     inputIDs.forEach(id => {
         const inputElement = document.getElementById(id);
-        inputElement.addEventListener('blur', function() {
+        inputElement.addEventListener('blur', function () {
             const trimmedValue = inputElement.value.trim();
             if (trimmedValue === '') {
                 inputElement.value = 0;
@@ -41,24 +44,29 @@ function watchInputs(inputIDs) {
 // Función para sumar los valores de los input y mostrar el resultado en un output
 function Suma(inputIDs, outputID) {
     const inputElements = inputIDs.map(id => parseFloat(document.getElementById(id).value) || 0);
-    const Suma = inputElements.reduce((total, value) => total + value, 0);
-    document.getElementById(outputID).value = Suma;
+    const suma = inputElements.reduce((total, value) => total + value, 0);
+    document.getElementById(outputID).value = suma;
 }
 
-  
+// Función para actualizar barra de progreso
+function updateProgressBar(barId, progress) {
+    const progressBar = document.getElementById(barId);
+    progressBar.style.width = progress + '%';
+}
+
 // Función para restar los valores de los input y mostrar el resultado en un output
 function Resta(inputIDs, outputID) {
     const inputElements = inputIDs.map(id => document.getElementById(id));
     const outputElement = document.getElementById(outputID);
 
-    let Resta = parseFloat(inputElements[0].value) || 0;
+    let resta = parseFloat(inputElements[0].value) || 0;
 
     inputElements.slice(1).forEach(input => {
         const value = parseFloat(input.value) || 0;
-        Resta -= value;
+        resta -= value;
     });
 
-    outputElement.value = Resta;
+    outputElement.value = resta;
 }
 
 // Función para cargar datos desde un archivo JSON local y asignarlos a los inputs
@@ -82,12 +90,20 @@ function cargarDatosDesdeJSON() {
             Suma(['inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP', 'inputSGP', 'inputSIGP'], 'outputGP');
             Suma(['outputHogar', 'outputTrans', 'outputEduc', 'outputGP'], 'outputGT');
             Resta(['outputInput', 'outputGT'], 'outputT');
-            let valor = parseFloat(document.getElementById('outputT').value<=0);
-            if (valor<=0) {
-                document.getElementById('outputT').style.color = 'red'; 
+
+            // Actualizar Barra Progreso
+            updateProgressBar('progreso1', calcularPercentaje(parseFloat(document.getElementById('outputHogar').value), parseFloat(document.getElementById('outputGT').value)));
+            updateProgressBar('progreso2', calcularPercentaje(parseFloat(document.getElementById('outputTrans').value), parseFloat(document.getElementById('outputGT').value)));
+            updateProgressBar('progreso3', calcularPercentaje(parseFloat(document.getElementById('outputEduc').value), parseFloat(document.getElementById('outputGT').value)));
+            updateProgressBar('progreso4', calcularPercentaje(parseFloat(document.getElementById('outputGP').value), parseFloat(document.getElementById('outputGT').value)));
+
+            // Cambiar Color de Output
+            let valor = parseFloat(document.getElementById('outputT').value);
+            if (valor <= 0) {
+                document.getElementById('outputT').style.color = 'red';
             }
-            else{
-                document.getElementById('outputT').style.color = 'green'; 
+            else {
+                document.getElementById('outputT').style.color = 'green';
             }
         })
         .catch(error => {
@@ -112,19 +128,22 @@ document.addEventListener('input', function (event) {
         Suma(['outputHogar', 'outputTrans', 'outputEduc', 'outputGP'], 'outputGT');
         Resta(['outputInput', 'outputGT'], 'outputT');
 
+
+        // Actualizar Barra Progreso
+        updateProgressBar('progreso1', calcularPercentaje(parseFloat(document.getElementById('outputHogar').value), parseFloat(document.getElementById('outputGT').value)));
+        updateProgressBar('progreso2', calcularPercentaje(parseFloat(document.getElementById('outputTrans').value), parseFloat(document.getElementById('outputGT').value)));
+        updateProgressBar('progreso3', calcularPercentaje(parseFloat(document.getElementById('outputEduc').value), parseFloat(document.getElementById('outputGT').value)));
+        updateProgressBar('progreso4', calcularPercentaje(parseFloat(document.getElementById('outputGP').value), parseFloat(document.getElementById('outputGT').value)));
+        
         let valor = parseFloat(document.getElementById('outputT').value);
-        if (valor<=0) {
-            document.getElementById('outputT').style.color = 'red'; 
+        if (valor <= 0) {
+            document.getElementById('outputT').style.color = 'red';
         }
-        else{
-            document.getElementById('outputT').style.color = 'green'; 
+        else {
+            document.getElementById('outputT').style.color = 'green';
         }
     }
-});  
-  
-  
-  
-  
+});
 
 // Agregar un evento al botón para cargar los datos cuando se haga click
 document.getElementById('cargarDatosButton').addEventListener('click', cargarDatosDesdeJSON);
