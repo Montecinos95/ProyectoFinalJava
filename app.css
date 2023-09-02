@@ -1,4 +1,3 @@
-
 .parent {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -19,3 +18,19 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input{
+  width: 6rem;
+  margin: 0.5rem;
+}
+
+span {
+  padding: 1rem;
+}
+
+#outputInput{
+  color: green;
+}
+
+#outputGT{
+  color: red;
+}

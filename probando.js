@@ -25,7 +25,8 @@ function watchInputs(inputIDs) {
                 if (numericValue < 0) {
                     inputElement.value = 0;
                     // Actualizar outputInput a cero si se ingresa un número negativo
-                    document.getElementById('outputInput', 'outputT').value = 0;
+                    document.getElementById('outputInput').value = 0;
+                    document.getElementById('outputT').value = 0;
                 }
             }
         });
@@ -39,6 +40,7 @@ function Suma(inputIDs, outputID) {
     document.getElementById(outputID).value = Suma;
 }
 
+  
 // Función para restar los valores de los input y mostrar el resultado en un output
 function Resta(inputIDs, outputID) {
     const inputElements = inputIDs.map(id => document.getElementById(id));
@@ -75,6 +77,13 @@ function cargarDatosDesdeJSON() {
             Suma(['inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP', 'inputSGP', 'inputSIGP'], 'outputGP');
             Suma(['outputHogar', 'outputTrans', 'outputEduc', 'outputGP'], 'outputGT');
             Resta(['outputInput', 'outputGT'], 'outputT');
+            let valor = parseFloat(document.getElementById('outputT').value<=0);
+            if (valor<=0) {
+                document.getElementById('outputT').style.color = 'red'; 
+            }
+            else{
+                document.getElementById('outputT').style.color = 'green'; 
+            }
         })
         .catch(error => {
             console.error('Error al cargar el archivo JSON:', error);
@@ -97,8 +106,20 @@ document.addEventListener('input', function (event) {
         Suma(['inputUGP', 'inputDGP', 'inputTGP', 'inputCGP', 'inputCIGP', 'inputSGP', 'inputSIGP'], 'outputGP');
         Suma(['outputHogar', 'outputTrans', 'outputEduc', 'outputGP'], 'outputGT');
         Resta(['outputInput', 'outputGT'], 'outputT');
-    }
-});
 
-// Agregar un evento al botón para cargar los datos cuando se haga clic
+        let valor = parseFloat(document.getElementById('outputT').value<=0);
+        if (valor<=0) {
+            document.getElementById('outputT').style.color = 'red'; 
+        }
+        else{
+            document.getElementById('outputT').style.color = 'green'; 
+        }
+    }
+});  
+  
+  
+  
+  
+
+// Agregar un evento al botón para cargar los datos cuando se haga click
 document.getElementById('cargarDatosButton').addEventListener('click', cargarDatosDesdeJSON);
